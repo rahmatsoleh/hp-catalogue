@@ -1,4 +1,7 @@
 import '../styles/style.css';
+import '../scripts/views/component/header-text.js';
+import '../scripts/views/component/footer-text.js';
 import 'jquery';
 
-$('main').html(`<h1 class="bg-slate-500">Coba Jquery</h1>`);
+$('header').html('<header-text></header-text>');
+$('footer').html('<footer-text></footer-text>');
