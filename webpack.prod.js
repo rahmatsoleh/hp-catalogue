@@ -17,7 +17,19 @@ module.exports = merge(common, {
                         }
                     }
                 ]
-            }
+            },
+            {
+                test: /\.html$/,
+                use: ["html-loader"]
+            },
+            {
+                test: /\.src\.js$/,
+                loader: 'minify-template-literal-loader',
+                options: {
+                  caseSensitive: true,
+                  collapseWhitespace: true
+                }
+            },
         ]
     },
     plugins: [

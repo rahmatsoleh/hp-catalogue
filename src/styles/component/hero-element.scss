@@ -1,0 +1,75 @@
+@use "../lib/root.scss" as root;
+@use "../lib/mixin.scss" as mixin;
+
+#hero-element {
+  @include mixin.flex();
+
+  width: 100%;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  color: root.$light;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+
+  h2 {
+    text-transform: uppercase;
+  }
+
+  p {
+    span {
+      background-color: root.$light;
+      color: root.$scondary-blue;
+      padding: 3px;
+      text-shadow: none;
+      font-weight: 600;
+      display: block;
+      width: fit-content;
+      margin: 0 auto;
+    }
+  }
+
+  .search-element {
+    @include mixin.flex();
+    background-color: root.$light;
+    width: fit-content;
+    margin: 1.5em auto;
+    padding: 5px;
+    border: 2px solid root.$scondary-blue;
+    border-radius: 2em;
+    box-sizing: border-box;
+
+    & > * {
+      font-size: 1.1em;
+      background-color: root.$light;
+      border: none;
+      margin: 0 5px;
+    }
+
+    input[type="text"]:focus {
+      outline-style: none;
+    }
+
+    button {
+      color: root.$scondary-blue;
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #hero-element {
+    width: 95%;
+    margin: 0 auto;
+    border-radius: 10px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #hero-element {
+    width: 100%;
+    margin: none;
+  }
+}

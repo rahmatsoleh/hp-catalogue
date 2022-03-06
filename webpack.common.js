@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     entry: './src/scripts/index.js',
@@ -11,7 +12,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/i,
+                test: /\.(scss|css)$/,
                 use: [
                     {
                         loader: "style-loader"
@@ -20,7 +21,7 @@ module.exports = {
                         loader: "css-loader"
                     },
                     {
-                        loader: 'postcss-loader'
+                        loader: 'sass-loader'
                     }
                 ]
             },
@@ -33,9 +34,19 @@ module.exports = {
                         outputPath: "images"
                     }
                 }
-            }
+            },
+            {
+                test: /\.js$/,
+                enforce: 'pre',
+                use: ['source-map-loader'],
+            },
+            {
+                test: /font-awesome\.config\.js/,
+                use: ['style-loader', 'font-awesome-loader'],
+            },
         ]
     },
+    
     plugins: [
         new webpack.ProvidePlugin({
             $: 'jquery',
@@ -44,6 +55,14 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "./src/templates/index.html",
             filename: "index.html"
-        })
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+              {
+                from: path.resolve(__dirname, 'src/public/images/'),
+                to: path.resolve(__dirname, 'dist/images/'),
+              },
+            ],
+          }),
     ]
 }
