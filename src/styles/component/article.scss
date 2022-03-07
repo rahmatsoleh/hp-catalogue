@@ -1,0 +1,30 @@
+@use "../lib/root.scss" as root;
+@use "../lib/mixin.scss" as mixin;
+
+#article-catalogue {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 2em;
+  padding: 1em;
+
+  h2 {
+    color: root.$primary-blue;
+    text-transform: uppercase;
+    font-size: 1.7em;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #article-catalogue {
+    h2 {
+      font-size: 2em;
+      text-align: center;
+    }
+    & > div {
+      @include mixin.flex();
+      flex-wrap: wrap;
+      gap: 1.5em;
+      padding: 2em 1em;
+    }
+  }
+}

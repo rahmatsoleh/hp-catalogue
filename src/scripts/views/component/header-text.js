@@ -1,4 +1,5 @@
 import { LitElement, html} from "lit";
+import '../../../styles/component/header-text.scss';
 
 class HeaderText extends LitElement {
     createRenderRoot(){
