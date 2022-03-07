@@ -1,18 +1,38 @@
 import '../../../styles/component/article.scss';
 import { LitElement, html } from 'lit';
+import { until } from 'lit/directives/until.js';
+import {unsafeHTML} from 'lit/directives/unsafe-html.js';
 import '../templates/card.js';
+import PhoneApi from '../../data/phone-api';
+
+const fetchData = async () => {
+    const { data } = await PhoneApi.latest();
+    const phoneData = data.data.phones;
+    let cardData = '';
+    phoneData.forEach(item => {
+        cardData += `
+            <card-phone 
+                image="${item.image}"
+                merk="${item.phone_name}"
+                slug="${item.slug}"
+            ></card-phone>
+        `
+    });
+    const htmlElement = unsafeHTML(cardData);
+    return htmlElement;
+}
 
 class ArticlePhone extends LitElement {
 
     static properties = {
         articleTitle : { type: 'String'},
-        dataCard : { type: 'Array' }
+        dataCard : { state: true }
     }
 
     constructor(){
         super();
         this.articleTitle = 'Article Title';
-        this.dataCard = [];
+        this.dataCard = fetchData();
     }
 
     createRenderRoot(){
@@ -23,20 +43,9 @@ class ArticlePhone extends LitElement {
         return html`
             <article id="article-catalogue">
                 <h2>${this.articleTitle}</h2>
-                <div>${this.renderCard()}</div>
+                <div>${until(this.dataCard, '')}</div>
             </article>
         `;
-    }
-
-    renderCard(){
-        const card = html`
-            <card-phone></card-phone>
-            <card-phone></card-phone>
-            <card-phone></card-phone>
-            <card-phone></card-phone>
-        `;
-
-        return card;
     }
 }
 
