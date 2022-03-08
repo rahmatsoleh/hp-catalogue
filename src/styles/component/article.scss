@@ -1,7 +1,7 @@
 @use "../lib/root.scss" as root;
 @use "../lib/mixin.scss" as mixin;
 
-#article-catalogue {
+.article-catalogue {
   width: 100%;
   box-sizing: border-box;
   margin-top: 2em;
@@ -15,7 +15,7 @@
 }
 
 @media screen and (min-width: 1024px) {
-  #article-catalogue {
+  .article-catalogue {
     h2 {
       font-size: 2em;
       text-align: center;

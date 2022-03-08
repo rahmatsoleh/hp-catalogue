@@ -51,7 +51,7 @@ class PhoneApi {
             const response = await axios.get(API_ENDPOINT.SEARCH(query));
             return response;
         } catch (error) {
-            
+            console.log(error);
         }
     }
 }

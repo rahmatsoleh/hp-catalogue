@@ -1,0 +1,36 @@
+@use "../lib/root.scss" as root;
+@use "../lib/mixin.scss" as mixin;
+
+.result-search {
+  box-sizing: border-box;
+  word-break: break-all;
+  word-wrap: break-word;
+  margin-top: 1em;
+  padding: 1em;
+
+  h2 {
+    color: root.$danger;
+    font-weight: 400;
+    font-size: 1.2em;
+    font-style: italic;
+
+    span {
+      font-weight: 600;
+    }
+  }
+
+  div {
+    margin-top: 1em;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .result-search {
+    padding: 2em;
+    & > div {
+      @include mixin.flex(center, start);
+      gap: 1.5em;
+      flex-wrap: wrap;
+    }
+  }
+}

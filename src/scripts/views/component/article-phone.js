@@ -25,7 +25,7 @@ class ArticlePhone extends LitElement {
 
     render(){
         return html`
-            <article id="article-catalogue">
+            <article class="article-catalogue">
                 <h2>${this.articleTitle}</h2>
                 <div>${until(this._renderCard(), '')}</div>
             </article>
@@ -35,9 +35,9 @@ class ArticlePhone extends LitElement {
     async _renderCard(){
         const { data } = await PhoneApi.listPhone(this.cardData);
         const phoneData = data.data.phones;
-        const dataCoba = phoneData;
+        const response = phoneData;
         let cardData = '';
-        dataCoba.forEach(item => {
+        response.forEach(item => {
             cardData += `
                 <card-phone 
                     image="${item.image || Mockup}"

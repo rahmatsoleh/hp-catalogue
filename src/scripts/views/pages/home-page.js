@@ -6,11 +6,11 @@ class HomePage {
     renderPage(){
         return `
             <hero-element></hero-element>
-            ${this._phoneLatest()}
+            ${this._phoneCollection()}
         `;
     }
 
-    _phoneLatest(){
+    _phoneCollection(){
 
         return `
             <article-phone articleTitle="HP Terbaru" cardData="latest"></article-phone>

@@ -1,9 +1,18 @@
 import { LitElement, html } from "lit";
-import PhoneApi from "../../data/phone-api";
 import '../../../styles/component/hero-element.scss';
+import SearchPage from "../pages/search-page";
 
 
-class HeroElement extends LitElement{    
+class HeroElement extends LitElement{  
+    
+    static properties = {
+        inputValue : { type: 'String'}
+    }
+
+    constructor(){
+        super();
+        this.inputValue = '';
+    }
 
     render(){
         return html`
@@ -13,7 +22,7 @@ class HeroElement extends LitElement{
                     <p>Website Pembantu Untuk Mencari <span>Spesifikasi HP</span></p>
                     <div class="search-element">
                         <button name="button" @click=${this.getDataQuery}><i class="fas fa-search"></i></button>
-                        <input type="text" placeholder="Cari HP disini..." @keyup="${this.keyAwesome}">
+                        <input type="text" placeholder="Cari HP disini..." @keyup="${this.keyAwesome}" value="${this.inputValue}">
                         <button name="reset" hidden @click=${this.hidden}>&#x2716;</button>
                     </div>
                 </div>
@@ -25,10 +34,10 @@ class HeroElement extends LitElement{
         return this;
     }
 
-    async getDataQuery(){
+    getDataQuery(){
         const keyword = $('input[type="text"]').val();
-        const dataResponse = await PhoneApi.search(keyword) || 'Kosong';
-        console.log(dataResponse);
+        
+        (keyword == '') ? location.reload() : SearchPage.renderPage(keyword);
     }
 
     hidden(){
