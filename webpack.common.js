@@ -30,7 +30,7 @@ module.exports = {
                 use: {
                     loader: "file-loader",
                     options: {
-                        name: "[name].[hash].[ext]",
+                        name: "[name].[ext]",
                         outputPath: "images"
                     }
                 }
@@ -53,8 +53,9 @@ module.exports = {
             jQuery: 'jquery'
         }),
         new HtmlWebpackPlugin({
-            template: "./src/templates/index.html",
-            filename: "index.html"
+            template: path.resolve(__dirname, "./src/templates/index.html"),
+            filename: "index.html",
+            favicon: path.resolve(__dirname, 'src/public/images/icon.png')
         }),
         new CopyWebpackPlugin({
             patterns: [
