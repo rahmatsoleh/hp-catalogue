@@ -36,8 +36,8 @@ class HeroElement extends LitElement{
 
     getDataQuery(){
         const keyword = $('input[type="text"]').val();
-        
-        (keyword == '') ? location.reload() : SearchPage.renderPage(keyword);
+        const query = keyword.replace(/\s/g, '');
+        (query == '' ) ? location.reload() : SearchPage.renderPage(keyword);
     }
 
     hidden(){

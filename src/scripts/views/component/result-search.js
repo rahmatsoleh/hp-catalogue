@@ -5,6 +5,8 @@ import PhoneApi from "../../data/phone-api";
 import '../../../styles/component/result-search.scss';
 import '../templates/card.js'
 import Mockup from '../../../public/images/mockup.jpg';
+import Empty from '../../../public/images/empty.jpg';
+import '../templates/card-lazy.js';
 
 class ResultSearch extends LitElement {
     static properties = {
@@ -24,7 +26,7 @@ class ResultSearch extends LitElement {
         return html`
             <article class="result-search">
                 <h2>Hasil Pencarian <span>${this.query}</span></h2>
-                <div>${until(this.makeCard(), 'Mohon ditunggu')}</div>
+                <div>${until(this.makeCard(), this.makeCardLazy())}</div>
             </article>
         `;
     }
@@ -44,8 +46,26 @@ class ResultSearch extends LitElement {
             `
         });
 
+        if(response.length == 0){
+            card = `
+                <div class="image-empty">
+                <img src="${Empty}" alt="Nothing Phone"/>
+                <p>${this.query} Tidak Ditemukan</p>
+                <div>
+            `;
+        }
+
         const elementHtml = unsafeHTML(card);
         return elementHtml;
+    }
+
+    makeCardLazy(){
+        let card = '';
+        for(let i = 0; i < 10; i++){
+            card += '<card-lazy></card-lazy>'
+        }
+
+        return unsafeHTML(card);
     }
 }
 

@@ -25,7 +25,7 @@ class Card extends LitElement{
         return html`
             <div class="card">
                 <div class="image">
-                    <img src="${this.image}" alt="Judul Hp" />
+                    <img src="${this.image}" alt="${this.merk}" />
                 </div>
                 <div class="description">
                     <h3>${this.merk}</h3>

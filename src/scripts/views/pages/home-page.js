@@ -13,9 +13,9 @@ class HomePage {
     _phoneCollection(){
 
         return `
-            <article-phone articleTitle="HP Terbaru" cardData="latest"></article-phone>
-            <article-phone articleTitle="HP Menarik" cardData="interest"></article-phone>
-            <article-phone articleTitle="HP Populer" cardData="fans"></article-phone>
+            <article-phone articleTitle="Latest" cardData="latest"></article-phone>
+            <article-phone articleTitle="Top By Interest" cardData="interest"></article-phone>
+            <article-phone articleTitle="Top By Fans" cardData="fans"></article-phone>
         `
     }
 }
