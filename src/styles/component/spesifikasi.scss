@@ -128,6 +128,25 @@
       }
     }
   }
+
+  .loading {
+    @include mixin.flex(center, center);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: root.$light;
+
+    span {
+      display: block;
+      width: 50px;
+      height: 50px;
+      background-color: root.$scondary-blue;
+      border-radius: 25px;
+      animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -139,11 +158,13 @@
       gap: 1em;
 
       .phone-desc {
+        width: 45%;
         padding: 1em;
         border-radius: 5px;
       }
 
       .phone-images {
+        width: 45%;
         .thumb-hero {
           overflow: hidden;
           box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
@@ -171,5 +192,13 @@
         }
       }
     }
+  }
+}
+
+@keyframes ping {
+  75%,
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
   }
 }

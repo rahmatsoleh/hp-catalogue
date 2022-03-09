@@ -33,12 +33,21 @@ class SpecPhone extends LitElement {
     }
 
     render(){
-        
         return html`
             <article id="spec">
-                ${until(this._renderDetail(this.phone), 'Loading')}
+                ${until(this._renderDetail(this.phone), this._loading())}
             </article>
         `;
+    }
+
+    _loading(){
+        const element = `
+            <div class="loading">
+                <span></span>
+            </div>
+        `;
+
+        return unsafeHTML(element);
     }
 
     async _renderDetail(slug){
