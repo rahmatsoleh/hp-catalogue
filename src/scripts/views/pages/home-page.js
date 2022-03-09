@@ -1,6 +1,5 @@
 import '../component/hero-element.js';
 import '../component/article-phone.js';
-import PhoneApi from '../../data/phone-api.js';
 
 class HomePage {
     renderPage(){

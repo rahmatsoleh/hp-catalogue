@@ -1,13 +1,15 @@
 import '../../../styles/component/card.scss';
 import { LitElement, html } from 'lit';
 import Mockup from '../../../public/images/mockup.jpg';
+import Detail from '../pages/detail.js';
 
 class Card extends LitElement{
 
     static properties = {
         image : { type: 'String'},
         merk : { type: 'String'},
-        slug : { type: 'String'}
+        slug : { type: 'String'},
+        keyword: { type: 'String'}
     }
 
     constructor(){
@@ -15,6 +17,7 @@ class Card extends LitElement{
         this.image = Mockup;
         this.merk = 'Brand Hanphone';
         this.slug = '';
+        this.keyword = '';
     }
 
     createRenderRoot(){
@@ -36,7 +39,10 @@ class Card extends LitElement{
     }
 
     _clickHandler(e){
-        console.log(e.target.getAttribute('slug'));
+        Detail.renderPage(e.target.getAttribute('slug'), this.keyword);
+        
+        // console.log(e.target.getAttribute('slug'));
+        // console.log(this.keyword);
     }
 }
 

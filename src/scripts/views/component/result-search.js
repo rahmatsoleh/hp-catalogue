@@ -42,6 +42,7 @@ class ResultSearch extends LitElement {
                     image="${item.image || Mockup}"
                     merk="${item.phone_name}"
                     slug="${item.slug}"
+                    keyword="${this.query}"
                 ></card-phone>
             `
         });

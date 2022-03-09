@@ -1,0 +1,175 @@
+@use "../lib/root.scss" as root;
+@use "../lib/mixin.scss" as mixin;
+
+#spec {
+  .main-spec {
+    .phone-images {
+      .thumb-hero {
+        margin-top: 1em;
+        padding: 0.5em;
+        width: 100%;
+        height: 300px;
+        box-sizing: border-box;
+        text-align: center;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
+
+      .thumbnails {
+        @include mixin.flex(start, start);
+        width: 100%;
+        box-sizing: border-box;
+        padding: 1em;
+        gap: 0.5em;
+        flex-wrap: wrap;
+        border-bottom: 2px solid root.$scondary-blue;
+
+        .active {
+          border: 2px solid root.$scondary-blue;
+          border-radius: 5px;
+          box-sizing: border-box;
+        }
+
+        .thumb {
+          width: 75px;
+          height: 75px;
+          border: 1px solid root.$color-lazy;
+          border-radius: 5px;
+          box-sizing: border-box;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+          }
+        }
+      }
+    }
+
+    .phone-desc {
+      background-color: root.$light-blue;
+      padding: 0.5em;
+
+      h3 {
+        color: root.$scondary-blue;
+        font-size: 2em;
+      }
+
+      h4 {
+        color: root.$primary-blue;
+        font-style: italic;
+        font-size: 1.5em;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1em;
+
+        tr {
+          text-align: left;
+          vertical-align: top;
+
+          th,
+          td {
+            padding: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .spesification {
+    margin-top: 1em;
+    padding: 0.5em;
+    h2 {
+      color: root.$scondary-blue;
+    }
+
+    .spec-detail {
+      margin: 1em 0 2em;
+
+      p {
+        color: root.$primary-blue;
+        font-weight: bold;
+        margin-bottom: 1em;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        word-break: break-all;
+        word-wrap: break-word;
+
+        tr {
+          vertical-align: top;
+
+          td:nth-child(1) {
+            width: 35vw;
+          }
+
+          td {
+            padding: 0.5em;
+            border-bottom: 1px solid root.$color-lazy;
+          }
+        }
+
+        tr:hover {
+          cursor: pointer;
+          background-color: root.$light-blue;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #spec {
+    margin-top: 1em;
+    .main-spec {
+      @include mixin.flex(start, start);
+      flex-wrap: nowrap;
+      gap: 1em;
+
+      .phone-desc {
+        padding: 1em;
+        border-radius: 5px;
+      }
+
+      .phone-images {
+        .thumb-hero {
+          overflow: hidden;
+          box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
+          margin-top: 0;
+          border-radius: 10px;
+          box-sizing: border-box;
+
+          img:hover {
+            transform: scale(1.2);
+            transition: transform 0.5s;
+          }
+        }
+      }
+    }
+
+    .spesification {
+      .spec-detail {
+        table {
+          tr {
+            td:nth-child(1) {
+              width: 20%;
+              min-width: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

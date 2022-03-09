@@ -5,7 +5,7 @@ const API_ENDPOINT = {
     SEARCH: (query) => `${CONFIG.BASE_URL}/v2/search?query=${query}`,
     LATEST: `${CONFIG.BASE_URL}/v2/latest`,
     INTEREST: `${CONFIG.BASE_URL}/v2/top-by-interest`,
-    FANS: `${CONFIG.BASE_URL}/v2/top-by-fans`
+    FANS: `${CONFIG.BASE_URL}/v2/top-by-fans`,
 }
 
 export default API_ENDPOINT;
