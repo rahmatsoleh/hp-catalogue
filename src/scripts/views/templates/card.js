@@ -39,9 +39,6 @@ class Card extends LitElement {
 
   _clickHandler(e) {
     Detail.renderPage(e.target.getAttribute('slug'), this.keyword);
-
-    // console.log(e.target.getAttribute('slug'));
-    // console.log(this.keyword);
   }
 }
 
