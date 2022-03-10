@@ -1,18 +1,18 @@
-import '../component/result-search.js'
+import '../component/result-search';
 
 class SearchPage {
-    static renderPage(keyword = ''){
-        if(!keyword) location.reload();
-        $('main').html(this._pageSection(keyword));
-        this._pageSection(keyword);
-    }
+  static renderPage(keyword = '') {
+    if (!keyword) location.reload();
+    $('main').html(this._pageSection(keyword));
+    this._pageSection(keyword);
+  }
 
-    static _pageSection(params){
-        return `
+  static _pageSection(params) {
+    return `
             <hero-element inputValue="${params}"></hero-element>
             <result-search query="${params}"></result-search>
         `;
-    }
+  }
 }
 
 export default SearchPage;

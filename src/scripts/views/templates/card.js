@@ -1,31 +1,30 @@
 import '../../../styles/component/card.scss';
 import { LitElement, html } from 'lit';
+import Detail from '../pages/detail';
 import Mockup from '../../../public/images/mockup.jpg';
-import Detail from '../pages/detail.js';
 
-class Card extends LitElement{
+class Card extends LitElement {
+  static properties = {
+    image: { type: 'String' },
+    merk: { type: 'String' },
+    slug: { type: 'String' },
+    keyword: { type: 'String' },
+  };
 
-    static properties = {
-        image : { type: 'String'},
-        merk : { type: 'String'},
-        slug : { type: 'String'},
-        keyword: { type: 'String'}
-    }
+  constructor() {
+    super();
+    this.image = Mockup;
+    this.merk = 'Brand Hanphone';
+    this.slug = '';
+    this.keyword = '';
+  }
 
-    constructor(){
-        super();
-        this.image = Mockup;
-        this.merk = 'Brand Hanphone';
-        this.slug = '';
-        this.keyword = '';
-    }
+  createRenderRoot() {
+    return this;
+  }
 
-    createRenderRoot(){
-        return this;
-    }
-
-    render(){
-        return html`
+  render() {
+    return html`
             <div class="card">
                 <div class="image">
                     <img src="${this.image}" alt="${this.merk}" />
@@ -36,14 +35,14 @@ class Card extends LitElement{
                 </div>
             </div>
         `;
-    }
+  }
 
-    _clickHandler(e){
-        Detail.renderPage(e.target.getAttribute('slug'), this.keyword);
-        
-        // console.log(e.target.getAttribute('slug'));
-        // console.log(this.keyword);
-    }
+  _clickHandler(e) {
+    Detail.renderPage(e.target.getAttribute('slug'), this.keyword);
+
+    // console.log(e.target.getAttribute('slug'));
+    // console.log(this.keyword);
+  }
 }
 
 customElements.define('card-phone', Card);

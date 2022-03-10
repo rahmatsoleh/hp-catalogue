@@ -1,13 +1,13 @@
-import { LitElement, html } from "lit";
+import { LitElement, html } from 'lit';
 import '../../../styles/component/card-lazy.scss';
 
 class CardLazy extends LitElement {
-    createRenderRoot(){
-        return this;
-    }
+  createRenderRoot() {
+    return this;
+  }
 
-    render(){
-        return html`
+  render() {
+    return html`
         <div class="card-lazy">
         <div class="image-lazy">
         </div>
@@ -17,7 +17,7 @@ class CardLazy extends LitElement {
         </div>
     </div>
         `;
-    }
+  }
 }
 
 customElements.define('card-lazy', CardLazy);
